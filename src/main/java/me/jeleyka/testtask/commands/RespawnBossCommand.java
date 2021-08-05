@@ -30,11 +30,11 @@ public class RespawnBossCommand extends Command {
         try {
             Class<? extends SimpleBoss> clazz =
                     (Class<? extends SimpleBoss>) Class.forName("me.jeleyka.testtask.game.entities." + args[0]);
+            BossManager.respawnDefaultBoss(clazz);
             UtilChat.sendMessage(sender, plugin
                     .getLocalizationConfig()
                     .getLocalization("FORCE_BOSS_RESPAWN",
                     new Placeholder("boss_name", clazz.getSimpleName())));
-            BossManager.respawnDefaultBoss(clazz);
         } catch (Exception exception) {
             notEnoughArguments(sender);
         }
