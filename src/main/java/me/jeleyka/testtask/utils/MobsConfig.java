@@ -41,6 +41,7 @@ public class MobsConfig extends Configuration {
         }
         for (String key : get().getKeys(false)) {
             MobData mobData = new MobData(getLocation(key + ".location"),
+                    getString(key + ".name"),
                     getOrDefault(key + ".respawnInSeconds", -1),
                     getDouble(key + ".health"),
                     getDouble(key + ".damage"),
@@ -61,12 +62,12 @@ public class MobsConfig extends Configuration {
     public void setDefaultValues() {
         saveMob(PillagerBoss.class, new MobData(new Location(
                 Bukkit.getWorld("world"), 100, 65, 100),
-                20, 8, 4, -1));
+                "&cРазоритель", 20, 8, 4, -1));
         saveMob(SummonedZombie.class, new MobData(null,
-                -1, 5, 1, -1));
+                "&cПризыватель", -1, 5, 1, -1));
         saveMob(SummonerBoss.class, new MobData(new Location(
                 Bukkit.getWorld("world"), 105, 65, 100),
-                20, 20, 2, -1));
+                "&7Мелкий зомби",20, 20, 2, -1));
         super.setDefaultValues();
     }
 

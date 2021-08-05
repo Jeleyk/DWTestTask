@@ -20,7 +20,7 @@ public class SummonerBoss extends SimpleBoss implements Fighter {
     private MobData babiesData;
 
     public SummonerBoss(MobData mobData) {
-        super(EntityTypes.ZOMBIE, "&cПризыватель", mobData);
+        super(EntityTypes.ZOMBIE, mobData);
     }
 
     public SummonerBoss() {

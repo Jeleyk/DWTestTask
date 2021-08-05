@@ -14,6 +14,7 @@ public class MobData {
 
     @NonFinal
     Location location;
+    String name;
     int respawnInSeconds;
     double health;
     double damage;

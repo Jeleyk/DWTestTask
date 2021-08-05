@@ -23,7 +23,7 @@ public class PillagerBoss extends SimpleBoss implements Fighter, ICrossbow {
     private int phase = 1;
 
     public PillagerBoss(MobData mobData) {
-        super(EntityTypes.PILLAGER, "&cРазоритель", mobData);
+        super(EntityTypes.PILLAGER, mobData);
         makeCrossbowman();
     }
 

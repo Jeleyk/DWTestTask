@@ -33,9 +33,9 @@ public abstract class SimpleBoss extends SimpleMonster {
     final String name;
     Location respawnLocation;
 
-    public SimpleBoss(EntityTypes<? extends EntityMonster> type, String name, MobData mobData) {
-        super(type, name, mobData);
-        this.name = name;
+    public SimpleBoss(EntityTypes<? extends EntityMonster> type, MobData mobData) {
+        super(type, mobData);
+        this.name = mobData.getName();
         this.respawnLocation = mobData.getLocation();
     }
 

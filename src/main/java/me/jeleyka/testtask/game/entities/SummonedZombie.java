@@ -12,7 +12,7 @@ import org.bukkit.Location;
 public class SummonedZombie extends SimpleMonster implements Fighter {
 
     public SummonedZombie(MobData mobData) {
-        super(EntityTypes.ZOMBIE, "&7Мелкий зомби", mobData);
+        super(EntityTypes.ZOMBIE, mobData);
         setBaby();
     }
 
@@ -29,13 +29,13 @@ public class SummonedZombie extends SimpleMonster implements Fighter {
     }
 
     public void setBaby() {
-            if (this.world != null && !this.world.isClientSide) {
-                AttributeModifiable attributemodifiable = this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
-                AttributeModifier c = (AttributeModifier) UtilAlgo.
-                        getPrivateField(EntityZombie.class, "c", null);
-                attributemodifiable.removeModifier(c);
-                attributemodifiable.b(c);
-            }
+        if (this.world != null && !this.world.isClientSide) {
+            AttributeModifiable attributemodifiable = this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+            AttributeModifier c = (AttributeModifier) UtilAlgo.
+                    getPrivateField(EntityZombie.class, "c", null);
+            attributemodifiable.removeModifier(c);
+            attributemodifiable.b(c);
+        }
     }
 
     @Override

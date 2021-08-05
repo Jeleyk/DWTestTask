@@ -33,7 +33,7 @@ public abstract class SimpleMonster extends EntityMonster implements AIMob {
     RespawnRunnable respawnRunnable;
 
 
-    public SimpleMonster(EntityTypes<? extends EntityMonster> type, String name, MobData mobData) {
+    public SimpleMonster(EntityTypes<? extends EntityMonster> type, MobData mobData) {
         super(type, ((CraftWorld) mobData.getLocation().getWorld()).getHandle());
 
         this.respawnInSeconds = mobData.getRespawnInSeconds();
@@ -49,7 +49,7 @@ public abstract class SimpleMonster extends EntityMonster implements AIMob {
         this.noDamageTicks = 0;
         this.persistent = true;
         this.canPickUpLoot = false;
-        this.setCustomName(new ChatComponentText(UtilChat.color(name)));
+        this.setCustomName(new ChatComponentText(UtilChat.color(mobData.getName())));
         initBehavior();
         this.setLocation(mobData.getLocation().getX(), mobData.getLocation().getY(),
                 mobData.getLocation().getZ(), mobData.getLocation().getYaw(), mobData.getLocation().getPitch());
