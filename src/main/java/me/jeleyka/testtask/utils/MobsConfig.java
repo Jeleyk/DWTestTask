@@ -64,10 +64,10 @@ public class MobsConfig extends Configuration {
                 Bukkit.getWorld("world"), 100, 65, 100),
                 "&cРазоритель", 20, 8, 4, -1));
         saveMob(SummonedZombie.class, new MobData(null,
-                "&cПризыватель", -1, 5, 1, -1));
+                "&7Мелкий зомби", -1, 5, 1, -1));
         saveMob(SummonerBoss.class, new MobData(new Location(
                 Bukkit.getWorld("world"), 105, 65, 100),
-                "&7Мелкий зомби",20, 20, 2, -1));
+                "&cПризыватель",20, 20, 2, -1));
         super.setDefaultValues();
     }
 
@@ -76,6 +76,7 @@ public class MobsConfig extends Configuration {
         set(key + ".script", key);
         setLocation(key + ".location", mobData.getLocation());
         set(key + ".health", mobData.getHealth());
+        set(key + ".name", mobData.getName());
         set(key + ".damage", mobData.getDamage());
         set(key + ".movementSpeed", mobData.getMovementSpeed());
         set(key + ".respawnInSeconds", mobData.getRespawnInSeconds());

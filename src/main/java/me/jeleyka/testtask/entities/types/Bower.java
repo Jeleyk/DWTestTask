@@ -14,7 +14,7 @@ public interface Bower extends AIMob, IRangedEntity {
         entityMonster.goalSelector.a(5, new PathfinderGoalRandomStrollLand(entityMonster, 1.0D));
         entityMonster.goalSelector.a(6, new PathfinderGoalLookAtPlayer(entityMonster, EntityHuman.class, 8.0F));
         entityMonster.goalSelector.a(6, new PathfinderGoalRandomLookaround(entityMonster));
-        entityMonster.targetSelector.a(1, new PathfinderGoalHurtByTarget(entityMonster, new Class[0]));
+        entityMonster.targetSelector.a(1, new PathfinderGoalHurtByTarget(entityMonster));
         entityMonster.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget<>(entityMonster, EntityHuman.class, true));
 
         PathfinderGoalBowShoot<? extends Bower> b = new PathfinderGoalBowShoot(entityMonster, 1.0D, 20, 15.0F);
@@ -40,9 +40,9 @@ public interface Bower extends AIMob, IRangedEntity {
         double d0 = entityLiving.locX() - entityMonster.locX();
         double d1 = entityLiving.e(0.3333333333333333D) - entityarrow.locY();
         double d2 = entityLiving.locZ() - entityMonster.locZ();
-        double d3 = (double)MathHelper.sqrt(d0 * d0 + d2 * d2);
+        double d3 = MathHelper.sqrt(d0 * d0 + d2 * d2);
         entityarrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, (float)(14 - entityMonster.world.getDifficulty().a() * 4));
-        EntityShootBowEvent event = CraftEventFactory.callEntityShootBowEvent(entityMonster, entityMonster.getItemInMainHand(), (ItemStack)null, entityarrow, EnumHand.MAIN_HAND, 0.8F, true);
+        EntityShootBowEvent event = CraftEventFactory.callEntityShootBowEvent(entityMonster, entityMonster.getItemInMainHand(), null, entityarrow, EnumHand.MAIN_HAND, 0.8F, true);
         if (event.isCancelled()) {
             event.getProjectile().remove();
         } else {
