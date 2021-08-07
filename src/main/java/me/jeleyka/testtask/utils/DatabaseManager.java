@@ -56,7 +56,7 @@ public class DatabaseManager {
         plugin.getSql().executeUpdate(statement);
     }
 
-    private void printBossesInfosBetweenDates(CommandSender sender, PreparedStatement statement) {
+    private void printBossesInfos(CommandSender sender, PreparedStatement statement) {
         HashMap<String, Integer> kills = new HashMap<>();
         HashMap<String, Integer> damagers = new HashMap<>();
 
@@ -106,7 +106,7 @@ public class DatabaseManager {
             exception.printStackTrace();
         }
         try {
-            printBossesInfosBetweenDates(sender, statement);
+            printBossesInfos(sender, statement);
         } catch (Exception exception) {
             UtilChat.sendMessage(sender, plugin.getLocalizationConfig()
                     .getLocalization("BOSS_INFO_COMMAND_ERROR"));
@@ -124,7 +124,7 @@ public class DatabaseManager {
         }
 
         try {
-            printBossesInfosBetweenDates(sender, statement);
+            printBossesInfos(sender, statement);
         } catch (Exception exception) {
             UtilChat.sendMessage(sender, plugin.getLocalizationConfig()
                     .getLocalization("BOSS_INFO_COMMAND_ERROR"));
