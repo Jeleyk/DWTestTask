@@ -62,6 +62,7 @@ public class PillagerBoss extends SimpleBoss implements Fighter, ICrossbow {
         super.onDamage(player, damage);
         if (getHealth() - damage <= getMaxHealth() / 2 && phase < 2) {
             phase++;
+            b(false);
             giftAxe();
 
             new BukkitRunnable() {

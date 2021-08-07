@@ -58,7 +58,7 @@ public abstract class SimpleBoss extends SimpleMonster {
     public void die() {
         super.die();
 
-        if (damagers != null) {
+        if (damagers != null && Main.getInstance().isEnabled()) {
             List<Player> topDamagers = new ArrayList<>(damagers.keySet());
             topDamagers.sort(Comparator.comparingDouble(damagers::get));
             topDamagers = Lists.reverse(topDamagers);

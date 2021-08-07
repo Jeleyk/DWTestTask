@@ -28,15 +28,18 @@ public class BossesInfoCommand extends Command {
         }
 
         long time = 1;
-        if (UtilAlgo.isInt(args[1])) {
+
+        boolean hasCount = UtilAlgo.isInt(args[1]);
+
+        if (hasCount) {
             if (args.length < 3) {
                 notEnoughArguments(sender);
                 return;
             }
-            time *= Integer.parseInt(args[1]);
+            time = Integer.parseInt(args[1]);
         }
 
-        switch (args[time == 1 ? 1 : 2]) {
+        switch (args[hasCount ? 2 : 1]) {
             case "day":
                 time *= DateUtils.MILLIS_PER_DAY;
                 break;

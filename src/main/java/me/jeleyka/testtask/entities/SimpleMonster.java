@@ -45,7 +45,7 @@ public abstract class SimpleMonster extends EntityMonster implements AIMob {
         if (mobData.getMovementSpeed() != -1) {
             this.craftAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(mobData.getMovementSpeed());
         }
-        this.setHealth((float) mobData.getHealth());
+        this.setHealth((float) getMaxHealth());
         this.noDamageTicks = 0;
         this.persistent = true;
         this.canPickUpLoot = false;
