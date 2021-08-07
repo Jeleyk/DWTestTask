@@ -50,10 +50,8 @@ public class MobsConfig extends Configuration {
             try {
                 data.put((Class<? extends SimpleMonster>) Class.forName("me.jeleyka.testtask.game.entities." + getString(key + ".script")), mobData);
             } catch (Exception exception) {
-                plugin.getLogger().warning(String.format(
+                throw new RuntimeException(String.format(
                         "Configuration file mobs.yml has failed script in mob with key %s.", key));
-                exception.printStackTrace();
-                throw new RuntimeException();
             }
         }
     }

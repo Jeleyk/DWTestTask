@@ -44,13 +44,16 @@ public class LocalizationsConfig extends Configuration {
 
     @Override
     public void setDefaultValues() {
-        get().set("BOSS_DEATH_MESSAGE", "&7Босс %name% &7был повержен.");
+        get().set("BOSS_DEATH_MESSAGE", "&7Босс %boss_name% &7был повержен.");
         get().set("TOP_DAMAGERS_MESSAGE", "&7Игроки, внесшие наибольший вклад в убийство:");
         get().set("TOP_DAMAGER_MESSAGE", "  &7%name% - &c%damage% &7урона.");
         get().set("BOSS_HEALTH", "%name%&7: &c%health%&7/&c%max_health%❤");
         get().set("BOSS_RESPAWN_HEAD", "&7Привет, %name%.");
         get().set("BOSS_RESPAWN_TIME", "%boss_name% &7появится через &a%time%&7.");
         get().set("FORCE_BOSS_RESPAWN", "%boss_name% &aпринудительно возрожден.");
+        get().set("BOSS_INFO_COMMAND_ERROR", "&cЗа этот промежуток времени не убивали этих боссов.");
+        get().set("BOSS_INFO_COMMAND_TOP_DAMAGER", "&7Больше всего урона было нанесено игроком &a%name% &7- &c%damage%hp&7.");
+        get().set("BOSS_INFO_COMMAND_KILLS", "&7Было убито &a%kills% &7боссов &c%boss_name%&7.");
         super.setDefaultValues();
     }
 }

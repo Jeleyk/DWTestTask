@@ -64,46 +64,20 @@ public abstract class SimpleBoss extends SimpleMonster {
             topDamagers = Lists.reverse(topDamagers);
 
             printDeathInfo(topDamagers);
-            saveInfoToSql(topDamagers);
+            Main.getInstance().getDatabaseManager().saveBossInfo(
+                    getClass().getSimpleName(),
+                    topDamagers, damagers
+            );
 
             damagers.clear();
         }
 
     }
 
-
-    private void saveInfoToSql(List<Player> topDamagers) {
-
-        StringBuilder topDamagersString = new StringBuilder("[");
-        for (int i = 0; i < Math.min(3, topDamagers.size()); i++) {
-            Player player = topDamagers.get(i);
-            topDamagersString
-                    .append("{player: ")
-                    .append(player.getName())
-                    .append(", damage:")
-                    .append(((int) (damagers.get(player) + 0)))
-                    .append("}, ");
-        }
-        topDamagersString.delete(topDamagersString.length() - 2, topDamagersString.length());
-        topDamagersString.append("]");
-
-        SQLite sql = Main.getInstance().getSql();
-        PreparedStatement statement = sql.prepareStatement(
-                "INSERT INTO bossDeaths VALUES (?, ?, ?);");
-        try {
-            statement.setString(1, getClass().getSimpleName());
-            statement.setDate(2, new Date(System.currentTimeMillis()));
-            statement.setString(3, topDamagersString.toString());
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-        }
-        sql.executeUpdate(statement);
-    }
-
     private void printDeathInfo(List<Player> topDamagers) {
         LocalizationsConfig localization = Main.getInstance().getLocalizationConfig();
         UtilChat.sendMessageToAll(localization.getLocalization("BOSS_DEATH_MESSAGE",
-                new Placeholder("name", name)));
+                new Placeholder("boss_name", name)));
         UtilChat.sendMessageToAll(localization.getLocalization("TOP_DAMAGERS_MESSAGE"));
 
         for (int i = 0; i < Math.min(3, topDamagers.size()); i++) {

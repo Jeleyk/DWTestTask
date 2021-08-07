@@ -64,24 +64,17 @@ public class SQLite {
         return (connection != null);
     }
 
-    public void executeUpdate(String query) {
-        new Thread(() -> {
-            try {
-                connection.prepareStatement(query).executeUpdate();
-            } catch (SQLException ex) {
-                this.logger.warning("Failed to execute database query.");
-                ex.printStackTrace();
-            }
-        }).start();
-    }
-
     public PreparedStatement prepareStatement(String sql) {
         try {
             return connection.prepareStatement(sql);
         } catch (SQLException exception) {
             exception.printStackTrace();
-            throw  new RuntimeException();
+            throw new RuntimeException();
         }
+    }
+
+    public void executeUpdate(String query) {
+        executeUpdate(prepareStatement(query));
     }
 
     public void executeUpdate(PreparedStatement statement) {
@@ -93,6 +86,18 @@ public class SQLite {
                 ex.printStackTrace();
             }
         }).start();
+    }
+
+    public ResultSet executeQuery(String query) {
+        return executeQuery(prepareStatement(query));
+    }
+
+    public ResultSet executeQuery(PreparedStatement statement) {
+        try {
+            return statement.executeQuery();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Failed to execute database query.");
+        }
     }
 
 }

@@ -3,3 +3,6 @@ main: me.jeleyka.testtask.Main
 version: ${version}
 api-version: 1.16
 author: Jeleyka
+depend:
+  - ProtocolLib
+  - PacketWrapper
